@@ -1,24 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 
-import { ReactComponent as Logo } from '../../assets/crown.svg'
+import './form-input.styles.scss'
 
-import './header.styles.scss'
-
-const Header = () => (
-    <div className='header'>
-        <Link to='/'>
-            <Logo className='logo' />
-        </Link>
-        <div className='options'>
-            <Link className='option' to='/shop'>
-                SHOP
-            </Link>
-            <Link className='option' to='/shop'>
-                CONTACT
-            </Link>
-        </div>
+const FormInput = ({ handleChange, label, ...otherProps }) => (
+    <div className='group'>
+        <input className='form-input' onChange={handleChange} {...otherProps} />
+        {
+            label ?
+                (<label className={`${otherProps.value.length ? 'shrink' : ''} form-input-label`}>
+                    {label}
+                </label> )
+                : null
+        }
     </div>
 )
 
-export default Header;
+export default FormInput;
